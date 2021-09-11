@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,10 +9,11 @@
     <link rel="stylesheet" href="/CSS/style.css">
     <!-- ICONSCOUT -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    
-    <title>Document</title>
+
+    <title>Location</title>
 </head>
-<body>
+
+<body style="height: 100%;">
     <header class="header">
         <nav class="nav container">
             <a href="/HTML/index.html" class="nav__logo">paco rabanne</a>
@@ -54,15 +56,19 @@
             </div>
         </nav>
     </header>
-    <main>
-
+    <main class="location_main">
+        <section class="home section" id="home" style="height: 400px;">
+            <div id="map"></div>
+        </section>
     </main>
     <footer>
-
     </footer>
-
-
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBIzeEJQP06Ly5C7bptHg7jT0vznI8t6dQ&callback=initMap&libraries=&v=weekly"
+        async></script>
     <!-- MAIN JS -->
     <script src="/JavaScript/main.js"></script>
 </body>
-</html>
+
+</html>l

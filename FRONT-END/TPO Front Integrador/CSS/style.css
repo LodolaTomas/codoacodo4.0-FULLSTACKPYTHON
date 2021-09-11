@@ -336,10 +336,30 @@ img {
   }
 
   .nav__menu {
-    margin-left: auto;
+    margin: auto;
   }
 
   .change-thene {
     margin: 0;
   }
+}
+
+/* HOME */
+.home__container {
+  gap: 1rem;
+}
+.home__content {
+  padding-top: 3.5rem;
+}
+
+/* LOCATION */
+.location_main {
+  margin: 1rem;
+  margin-top: 2rem;
+}
+
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+  height: 100% !important;
 }
