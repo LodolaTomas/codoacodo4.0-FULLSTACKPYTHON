@@ -164,12 +164,14 @@ const styles = {
 };
 
 /* SCROLL DOWN  */
-window.onscroll = function () {
+const navbar = document.getElementById("navbar");
+const header = document.getElementById("header");
+/* window.onscroll = function () {
   myFunction();
 };
 
-var navbar = document.getElementById("navbar");
-var sticky = navbar.offsetTop;
+
+const sticky = navbar.offsetTop;
 
 function myFunction() {
   if (window.pageYOffset >= sticky) {
@@ -178,9 +180,9 @@ function myFunction() {
     navbar.classList.remove("sticky");
   }
 }
-
+ */
 /* SmoothScroll */
-
+/* 
 function smoothScroll(target, duration) {
   const targetPosition = target.getBoundingClientRect().top;
   const startPosition = window.pageYOffset;
@@ -206,4 +208,84 @@ const section1 =  document.querySelector('.section');
 
 section1.addEventListener('click',function(){
   smoothScroll('.section2',100000);
-})
+}) */
+var script = document.createElement('script');
+script.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
+script.type = 'text/javascript';
+document.getElementsByTagName('head')[0].appendChild(script);
+
+let ticking = false;
+const isFirefox = (/Firefox/i.test(navigator.userAgent));
+const isIe = (/MSIE/i.test(navigator.userAgent)) || (/Trident.*rv\:11\./i.test(navigator.userAgent));
+const scrollSensitivitySetting = 30; //Increase/decrease this number to change sensitivity to trackpad gestures (up = less sensitive; down = more sensitive) 
+const slideDurationSetting = 600; //Amount of time for which slide is "locked"
+let currentSlideNumber = 0;
+const totalSlideNumber = $(".background").length;
+
+
+
+// ------------- DETERMINE DELTA/SCROLL DIRECTION ------------- //
+function parallaxScroll(evt) {
+  if (isFirefox) {
+    //Set delta for Firefox
+    delta = evt.detail * (-120);
+  } else if (isIe) {
+    //Set delta for IE
+    delta = -evt.deltaY;
+  } else {
+    //Set delta for all other browsers
+    delta = evt.wheelDelta;
+  }
+
+  if (ticking != true) {
+    if (delta <= -scrollSensitivitySetting) {
+      //Down scroll
+      ticking = true;
+      if (currentSlideNumber !== totalSlideNumber - 1) {
+        currentSlideNumber++;
+        nextItem();
+      }
+      slideDurationTimeout(slideDurationSetting);
+    }
+    if (delta >= scrollSensitivitySetting) {
+      //Up scroll
+      ticking = true;
+      if (currentSlideNumber !== 0) {
+        currentSlideNumber--;
+      }
+      previousItem();
+      slideDurationTimeout(slideDurationSetting);
+    }
+    console.log(currentSlideNumber)
+    if (currentSlideNumber === 0) {
+      header.classList.add("absolute");
+      navbar.classList.remove("nav-top")
+    }else{
+      header.classList.remove("absolute");
+      navbar.classList.add("nav-top")
+    }
+  }
+}
+
+// ------------- SET TIMEOUT TO TEMPORARILY "LOCK" SLIDES ------------- //
+function slideDurationTimeout(slideDuration) {
+  setTimeout(function() {
+    ticking = false;
+  }, slideDuration);
+}
+
+// ------------- ADD EVENT LISTENER ------------- //
+const mousewheelEvent = isFirefox ? "DOMMouseScroll" : "wheel";
+window.addEventListener(mousewheelEvent, _.throttle(parallaxScroll, 60), false);
+
+// ------------- SLIDE MOTION ------------- //
+function nextItem() {
+  const $previousSlide = $(".background").eq(currentSlideNumber - 1);
+  $previousSlide.removeClass("up-scroll").addClass("down-scroll");
+}
+
+function previousItem() {
+  const $currentSlide = $(".background").eq(currentSlideNumber);
+  $currentSlide.removeClass("down-scroll").addClass("up-scroll");
+  
+}

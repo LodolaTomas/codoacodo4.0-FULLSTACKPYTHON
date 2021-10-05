@@ -17,7 +17,7 @@
   --input-color: hsl(var(--hue-color), 70%, 96%);
   --body-color: hsl(var(--hue-color), 60%, 99%);
   --container-color: #fff;
-
+  --title-text:#000;
   /* Font and typography */
   --body-font: "Urbanist", sans-serif;
 
@@ -44,6 +44,13 @@
   --mb-2: 2rem;
   --mb-2-5: 2.5rem;
   --mb-3: 3rem;
+
+  /* Parallax */
+
+  --parallax-offset: 30vh;
+  --content-offset: 40vh;
+  --transition-speed: 1.2s;
+  --slide-number: 3;
 
   /* Z index */
 
@@ -73,6 +80,7 @@ body.dark-theme {
   --input-color: hsl(var(--hue-color), 29%, 16%);
   --body-color: hsl(var(--hue-color), 28%, 12%);
   --container-color: hsl(var(--hue-color), 29%, 16%);
+  --title-text:hsl(0, 0%, 100%);
 }
 /* button dark/light */
 .nav__btns {
@@ -107,7 +115,7 @@ body {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
-  color: var(--text-color);
+  color: var(--title-text);
 }
 
 h1,
@@ -168,17 +176,17 @@ img {
   /* position: fixed; */
   top: 0;
   left: 0;
-  z-index: var(--z-fixed);
+  /* z-index: var(--z-fixed); */
   /* background-color: var(--body-color); */
 }
 .header .header__content {
   text-align: center;
-  background-color: #0e0e0e;
-  color: white;
+  background-color: var(--text-color);
+  color: var(--body-color);
   padding: 10px;
 }
 .header .header__content a {
-  color: #fefefe;
+  color: var(--body-color);
 }
 
 .container {
@@ -188,7 +196,7 @@ img {
   justify-content: space-between;
   align-items: center;
 }
-/* NAV */
+/* Nav */
 .nav {
   background-color: var(--body-color);
   opacity: 1;
@@ -285,7 +293,15 @@ img {
 
 .sticky {
   position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+.nav-top {
   top: 0;
+}
+.absolute {
+  z-index: 1000;
+  position: relative;
   width: 100%;
 }
 
@@ -399,7 +415,7 @@ img {
 
 /* MAIN */
 
-.main__img {
+/* .main__img {
   position: absolute;
   z-index: -999;
   top: 0;
@@ -410,4 +426,117 @@ img {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+} */
+
+/* AAAAAA */
+
+.background {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  will-change: transform;
+  height: 130vh;
+  position: fixed;
+  width: 100%;
+  transform: translateY(30vh);
+  transition: all 1.2s cubic-bezier(0.22, 0.44, 0, 1);
+}
+.background:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.56;
+  background-color: var(--body-color);
+  color: var(--title-text);
+}
+.background:first-child {
+  background-image: url("../Assets/Fotos/1-million-and-lady-million-lucky.jpg");
+  transform: translateY(0vh);
+}
+.background:first-child .content-wrapper {
+  transform: translateY(15vh);
+}
+.background:nth-child(2) {
+  background-image: url("../Assets/Fotos/final.jpg");
+}
+.background:nth-child(3) {
+  background-image: url("../Assets/Fotos/paco-rabanne_invictus.jpg");
+}
+
+/* Set stacking context of slides */
+
+.background:nth-child(1) {
+  z-index: 6;
+}
+
+.background:nth-child(2) {
+  z-index: 5;
+}
+
+.background:nth-child(3) {
+  z-index: 4;
+}
+
+.content-wrapper {
+  width: 50vw;
+  height: 100vh;
+  flex-flow: column nowrap;
+  text-transform: capitalize;
+  transform: translateY(40vh);
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: all 1.7s cubic-bezier(0.22, 0.44, 0, 1);
+}
+.content-title {
+  text-transform: uppercase;
+  font-size: calc(3.5em + 1vw);
+  line-height: 1.4;
+}
+.content-subtitle{
+  font-size: calc(.5em + 1vw);
+  line-height: 1.2;
+}
+.content-wrapper-1 {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content-wrapper-2 {
+  margin: 0 0 0 auto;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.background.up-scroll {
+  transform: translate3d(0, -15vh, 0);
+}
+.background.up-scroll .content-wrapper {
+  transform: translateY(15vh);
+}
+.background.up-scroll + .background {
+  transform: translate3d(0, 30vh, 0);
+}
+.background.up-scroll + .background .content-wrapper {
+  transform: translateY(30vh);
+}
+
+.background.down-scroll {
+  transform: translate3d(0, -143vh, 0);
+}
+.background.down-scroll .content-wrapper {
+  transform: translateY(40vh);
+}
+.background.down-scroll + .background:not(.down-scroll) {
+  transform: translate3d(0, -15vh, 0);
+}
+.background.down-scroll + .background:not(.down-scroll) .content-wrapper {
+  transform: translateY(15vh);
 }
