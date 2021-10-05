@@ -122,7 +122,7 @@ ul {
   list-style: none;
 }
 
-a {
+.nav a {
   text-decoration: none;
 }
 
@@ -165,26 +165,40 @@ img {
 
 .header {
   width: 100%;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
-  background-color: var(--body-color);
+  /* background-color: var(--body-color); */
+}
+.header .header__content {
+  text-align: center;
+  background-color: #0e0e0e;
+  color: white;
+  padding: 10px;
+}
+.header .header__content a {
+  color: #fefefe;
 }
 
-/* NAV */
-.nav {
+.container {
   max-width: 968px;
   height: var(--header-height);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+/* NAV */
+.nav{
+  background-color: var(--body-color);
+  opacity: 1;
+}
 
 .nav__logo,
 .nav__toggle {
   color: var(--title-color);
   font-weight: var(--font-medium);
+  font-size: var(--h1-font-size);
 }
 
 .nav__logo:hover {
@@ -200,7 +214,7 @@ img {
   color: var(--fist-color);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 830px) {
   .nav__menu {
     position: fixed;
     top: -100%;
@@ -269,6 +283,12 @@ img {
   color: var(--fist-color);
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 /* SHOW MENU */
 
 .show-menu {
@@ -295,7 +315,7 @@ img {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 830px) {
   .container {
     margin-left: auto;
     margin-right: auto;
@@ -314,14 +334,14 @@ img {
     bottom: initial;
   }
 
-  .header,
+  .container,
   .main,
   .footer__container {
     padding: 0 1rem;
   }
 
-  .nav {
-    height: calc(var(--header-height)+1.5rem);
+  .container {
+    height: calc(var(--header-height)+3.5rem);
     column-gap: 1rem;
   }
   .nav__icon,
@@ -362,4 +382,26 @@ img {
        * element that contains the map. */
 #map {
   height: 100% !important;
+}
+
+
+/* MAIN */
+
+.main__img {
+  background: url("../Assets/Fotos/1-million-and-lady-million-lucky.png");
+  height: 87.4vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.smooth{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(100vh);
 }
