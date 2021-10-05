@@ -64,18 +64,17 @@ themeButton.addEventListener("click", () => {
   localStorage.setItem("selected-theme", getCurrentTheme());
   localStorage.setItem("selected-icon", getCurrentIcon());
   //call the function to set night mode
-  initMap()
+  initMap();
 });
 
 function initMap() {
-  
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: -34.62137250491205, lng: -58.37137936816418 },
     zoom: 15,
     mapTypeControl: false,
   });
   //if the class name is dark-theme set the styles in night
-  if (document.body.className ==='dark-theme') {
+  if (document.body.className === "dark-theme") {
     map.setOptions({ styles: styles.night });
   }
 }
@@ -164,17 +163,47 @@ const styles = {
   ],
 };
 
-
 /* SCROLL DOWN  */
-window.onscroll = function() {myFunction()};
+window.onscroll = function () {
+  myFunction();
+};
 
 var navbar = document.getElementById("navbar");
 var sticky = navbar.offsetTop;
 
 function myFunction() {
   if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
+    navbar.classList.add("sticky");
   } else {
     navbar.classList.remove("sticky");
   }
 }
+
+/* SmoothScroll */
+
+function smoothScroll(target, duration) {
+  const targetPosition = target.getBoundingClientRect().top;
+  const startPosition = window.pageYOffset;
+  const distance = targetPosition - startPosition;
+  const startTime = null;
+  function animation(currentTime) {
+    if (startTime == null) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const run = ease(timeElapsed, startPosition, distance, duration);
+    window.scrollTo(0,run);
+    if(timeElapsed < duration) requestAnimationFrame(animation);
+  }
+
+  function ease(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return (c / 2) * t * t + b;
+    t--;
+    return (-c / 2) * (t * (t - 2) - 1) + b;
+  }
+  requestAnimationFrame(animation);
+}
+const section1 =  document.querySelector('.section');
+
+section1.addEventListener('click',function(){
+  smoothScroll('.section2',100000);
+})

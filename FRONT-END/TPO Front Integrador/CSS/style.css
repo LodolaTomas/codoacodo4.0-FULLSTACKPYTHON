@@ -189,7 +189,7 @@ img {
   align-items: center;
 }
 /* NAV */
-.nav{
+.nav {
   background-color: var(--body-color);
   opacity: 1;
 }
@@ -299,7 +299,7 @@ img {
 
 /* for small devices */
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 450px) {
   .container {
     margin-left: var(--mb-1);
     margin-right: var(--mb-1);
@@ -313,6 +313,10 @@ img {
   .home__content {
     grid-template-columns: 0.25fr 3fr;
   }
+  /* .main__img {
+    background-position: -500px !important;
+    background-position: -450px !important;
+  } */
 }
 
 @media screen and (min-width: 830px) {
@@ -374,8 +378,17 @@ img {
 
 /* LOCATION */
 .location_main {
-  margin: 1rem;
-  margin-top: 2rem;
+  min-height: 90vh;
+  display: flex;
+}
+
+.section {
+  height: 200px;
+  width: 100%;
+  margin: 0 1rem 0 1rem;
+  align-items: center;
+  align-self: flex-end;
+  padding: 0 !important;
 }
 
 /* Always set the map height explicitly to define the size of the div
@@ -384,24 +397,17 @@ img {
   height: 100% !important;
 }
 
-
 /* MAIN */
 
 .main__img {
+  position: absolute;
+  z-index: -999;
+  top: 0;
+  left: 0;
   background: url("../Assets/Fotos/1-million-and-lady-million-lucky.png");
-  height: 87.4vh;
+  height: 100vh;
+  width: 100vw;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-
-.smooth{
-  position: relative;
-  width: 100%;
-  height: 100%;
-  scroll-behavior: smooth;
-  overflow-y: scroll;
-  scroll-snap-type: mandatory;
-  scroll-snap-points-y: repeat(100vh);
 }
