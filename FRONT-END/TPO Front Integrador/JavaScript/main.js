@@ -182,16 +182,18 @@ function myFunction() {
 }
  */
 /* SmoothScroll */
-/* 
-function smoothScroll(target, duration) {
-  const targetPosition = target.getBoundingClientRect().top;
-  const startPosition = window.pageYOffset;
-  const distance = targetPosition - startPosition;
-  const startTime = null;
+
+/* function smoothScroll(target, duration) {
+  var target= document.querySelector(target);
+  var targetPosition = target.getBoundingClientRect().top;
+  var startPosition = window.pageYOffset;
+  var distance = targetPosition - startPosition;
+  var startTime = null;
   function animation(currentTime) {
     if (startTime == null) startTime = currentTime;
-    const timeElapsed = currentTime - startTime;
-    const run = ease(timeElapsed, startPosition, distance, duration);
+    console.log(startTime);
+    var timeElapsed = currentTime - startTime;
+    var run = ease(timeElapsed, startPosition, distance, duration);
     window.scrollTo(0,run);
     if(timeElapsed < duration) requestAnimationFrame(animation);
   }
@@ -203,32 +205,100 @@ function smoothScroll(target, duration) {
     return (-c / 2) * (t * (t - 2) - 1) + b;
   }
   requestAnimationFrame(animation);
-}
-const section1 =  document.querySelector('.section');
+} */
+var bajar_medio = document.querySelector(".section1");
+var bajar_final = document.querySelector(".section-2");
+var subir_principio = document.querySelector(".section-1");
+var subir_principio2 = document.querySelector(".section-up");
 
-section1.addEventListener('click',function(){
-  smoothScroll('.section2',100000);
-}) */
-var script = document.createElement('script');
-script.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
-script.type = 'text/javascript';
-document.getElementsByTagName('head')[0].appendChild(script);
+bajar_medio.addEventListener("click", function () {
+  console.log("click");
+  ticking = true;
+  if (currentSlideNumber !== totalSlideNumber - 1) {
+    currentSlideNumber++;
+    nextItem();
+  }
+  slideDurationTimeout(slideDurationSetting);
+  if (currentSlideNumber === 0) {
+    header.classList.add("absolute");
+    navbar.classList.remove("nav-top");
+  } else {
+    header.classList.remove("absolute");
+    navbar.classList.add("nav-top");
+  }
+});
+
+bajar_final.addEventListener("click", function () {
+  console.log("click-1");
+  ticking = true;
+  if (currentSlideNumber !== totalSlideNumber - 1) {
+    currentSlideNumber++;
+    nextItem();
+  }
+  slideDurationTimeout(slideDurationSetting);
+  if (currentSlideNumber === 0) {
+    header.classList.add("absolute");
+    navbar.classList.remove("nav-top");
+  } else {
+    header.classList.remove("absolute");
+    navbar.classList.add("nav-top");
+  }
+});
+
+subir_principio.addEventListener("click", function () {
+  console.log("subo");
+  ticking = true;
+  if (currentSlideNumber !== 0) {
+    currentSlideNumber--;
+  }
+  previousItem();
+  slideDurationTimeout(slideDurationSetting);
+  previousItem();
+  if (currentSlideNumber === 0) {
+    header.classList.add("absolute");
+    navbar.classList.remove("nav-top");
+  } else {
+    header.classList.remove("absolute");
+    navbar.classList.add("nav-top");
+  }
+});
+subir_principio2.addEventListener("click", function () {
+  console.log("subo");
+  ticking = true;
+  if (currentSlideNumber !== 0) {
+    currentSlideNumber--;
+  }
+  previousItem();
+  slideDurationTimeout(slideDurationSetting);
+  previousItem();
+  if (currentSlideNumber === 0) {
+    header.classList.add("absolute");
+    navbar.classList.remove("nav-top");
+  } else {
+    header.classList.remove("absolute");
+    navbar.classList.add("nav-top");
+  }
+});
+var script = document.createElement("script");
+script.src = "https://code.jquery.com/jquery-3.6.0.min.js";
+script.type = "text/javascript";
+document.getElementsByTagName("head")[0].appendChild(script);
 
 let ticking = false;
-const isFirefox = (/Firefox/i.test(navigator.userAgent));
-const isIe = (/MSIE/i.test(navigator.userAgent)) || (/Trident.*rv\:11\./i.test(navigator.userAgent));
-const scrollSensitivitySetting = 30; //Increase/decrease this number to change sensitivity to trackpad gestures (up = less sensitive; down = more sensitive) 
+const isFirefox = /Firefox/i.test(navigator.userAgent);
+const isIe =
+  /MSIE/i.test(navigator.userAgent) ||
+  /Trident.*rv\:11\./i.test(navigator.userAgent);
+const scrollSensitivitySetting = 30; //Increase/decrease this number to change sensitivity to trackpad gestures (up = less sensitive; down = more sensitive)
 const slideDurationSetting = 600; //Amount of time for which slide is "locked"
 let currentSlideNumber = 0;
 const totalSlideNumber = $(".background").length;
-
-
 
 // ------------- DETERMINE DELTA/SCROLL DIRECTION ------------- //
 function parallaxScroll(evt) {
   if (isFirefox) {
     //Set delta for Firefox
-    delta = evt.detail * (-120);
+    delta = evt.detail * -120;
   } else if (isIe) {
     //Set delta for IE
     delta = -evt.deltaY;
@@ -256,20 +326,20 @@ function parallaxScroll(evt) {
       previousItem();
       slideDurationTimeout(slideDurationSetting);
     }
-    console.log(currentSlideNumber)
+    console.log(currentSlideNumber);
     if (currentSlideNumber === 0) {
       header.classList.add("absolute");
-      navbar.classList.remove("nav-top")
-    }else{
+      navbar.classList.remove("nav-top");
+    } else {
       header.classList.remove("absolute");
-      navbar.classList.add("nav-top")
+      navbar.classList.add("nav-top");
     }
   }
 }
 
 // ------------- SET TIMEOUT TO TEMPORARILY "LOCK" SLIDES ------------- //
 function slideDurationTimeout(slideDuration) {
-  setTimeout(function() {
+  setTimeout(function () {
     ticking = false;
   }, slideDuration);
 }
@@ -287,5 +357,4 @@ function nextItem() {
 function previousItem() {
   const $currentSlide = $(".background").eq(currentSlideNumber);
   $currentSlide.removeClass("down-scroll").addClass("up-scroll");
-  
 }

@@ -17,7 +17,7 @@
   --input-color: hsl(var(--hue-color), 70%, 96%);
   --body-color: hsl(var(--hue-color), 60%, 99%);
   --container-color: #fff;
-  --title-text:#000;
+  --title-text: #000;
   /* Font and typography */
   --body-font: "Urbanist", sans-serif;
 
@@ -80,7 +80,7 @@ body.dark-theme {
   --input-color: hsl(var(--hue-color), 29%, 16%);
   --body-color: hsl(var(--hue-color), 28%, 12%);
   --container-color: hsl(var(--hue-color), 29%, 16%);
-  --title-text:hsl(0, 0%, 100%);
+  --title-text: hsl(0, 0%, 100%);
 }
 /* button dark/light */
 .nav__btns {
@@ -173,11 +173,8 @@ img {
 
 .header {
   width: 100%;
-  /* position: fixed; */
   top: 0;
   left: 0;
-  /* z-index: var(--z-fixed); */
-  /* background-color: var(--body-color); */
 }
 .header .header__content {
   text-align: center;
@@ -228,11 +225,28 @@ img {
     top: -100%;
     left: 0;
     width: 100%;
+    z-index: 300;
     background-color: var(--body-color);
     padding: 4rem 1rem 2rem;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
     border-radius: 0 0 1.5rem 1.5rem;
     transition: 0.3s;
+  }
+  .background:first-child {
+    background-image: url("../Assets/Fotos/oneMillon2.jpg") !important;
+  }
+  .background:nth-child(2) {
+    background-image: url("../Assets/Fotos/phantom2.jpg") !important;
+  }
+  .background:nth-child(3) {
+    background-image: url("../Assets/Fotos/pureXNight2.png") !important;
+  }
+  .content-wrapper-1, .content-wrapper-2{
+    width: 100vw !important;
+  }
+  .content-wrapper-3{
+    width: 100vw !important;
+    margin-top: 200px !important;
   }
 }
 
@@ -247,7 +261,7 @@ img {
   align-items: center;
   font-size: var(--small--font-size);
   color: var(--title-color);
-  justify-content: space-between;
+  justify-content: space-around;
   font-weight: var(--font-medium);
 }
 .nav__link:hover {
@@ -298,9 +312,10 @@ img {
 }
 .nav-top {
   top: 0;
+  z-index: 10;
 }
 .absolute {
-  z-index: 1000;
+  z-index: 20;
   position: relative;
   width: 100%;
 }
@@ -329,12 +344,7 @@ img {
   .home__content {
     grid-template-columns: 0.25fr 3fr;
   }
-  /* .main__img {
-    background-position: -500px !important;
-    background-position: -450px !important;
-  } */
 }
-
 @media screen and (min-width: 830px) {
   .container {
     margin-left: auto;
@@ -413,22 +423,7 @@ img {
   height: 100% !important;
 }
 
-/* MAIN */
-
-/* .main__img {
-  position: absolute;
-  z-index: -999;
-  top: 0;
-  left: 0;
-  background: url("../Assets/Fotos/1-million-and-lady-million-lucky.png");
-  height: 100vh;
-  width: 100vw;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
-
-/* AAAAAA */
+/* Parallax */
 
 .background {
   background-position: center center;
@@ -440,6 +435,8 @@ img {
   width: 100%;
   transform: translateY(30vh);
   transition: all 1.2s cubic-bezier(0.22, 0.44, 0, 1);
+  display: flex;
+  flex-flow: column nowrap;
 }
 .background:before {
   content: "";
@@ -450,22 +447,20 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.56;
-  background-color: var(--body-color);
-  color: var(--title-text);
+  color: var(--text-color);
 }
 .background:first-child {
-  background-image: url("../Assets/Fotos/1-million-and-lady-million-lucky.jpg");
+  background-image: url("../Assets/Fotos/oneMillon.jpg");
   transform: translateY(0vh);
 }
 .background:first-child .content-wrapper {
   transform: translateY(15vh);
 }
 .background:nth-child(2) {
-  background-image: url("../Assets/Fotos/final.jpg");
+  background-image: url("../Assets/Fotos/phantom.jpg");
 }
 .background:nth-child(3) {
-  background-image: url("../Assets/Fotos/paco-rabanne_invictus.jpg");
+  background-image: url("../Assets/Fotos/pureXNight.webp");
 }
 
 /* Set stacking context of slides */
@@ -481,45 +476,54 @@ img {
 .background:nth-child(3) {
   z-index: 4;
 }
-
 .content-wrapper {
-  width: 50vw;
-  height: 100vh;
-  flex-flow: column nowrap;
-  text-transform: capitalize;
+  text-transform: uppercase;
   transform: translateY(40vh);
   will-change: transform;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transition: all 1.7s cubic-bezier(0.22, 0.44, 0, 1);
+  background: var(--body-color);
+  opacity: .9;
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 10px;
+}
+
+.content-wrapper-1 ,.content-wrapper-2{
+  width: 50vw;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-top: 40vh;
+}
+.content-wrapper-3{
+  width: 50vw;
+  margin: auto;
 }
 .content-title {
-  text-transform: uppercase;
-  font-size: calc(3.5em + 1vw);
-  line-height: 1.4;
-}
-.content-subtitle{
-  font-size: calc(.5em + 1vw);
-  line-height: 1.2;
-}
-.content-wrapper-1 {
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.content-wrapper-2 {
-  margin: 0 0 0 auto;
-  display: flex;
-  justify-content: center;
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  font-size: var(--h1-font-size);
+  line-height: 3rem;
   text-align: center;
+}
+.content-subtitle {
+  letter-spacing: normal;
+  line-height: 1.5rem;
+  letter-spacing: .05rem;
+  font-size: var(--small--font-size);
+  color: var(--title-color);
+  justify-content: space-around;
+  font-weight: var(--font-medium);
 }
 
 .background.up-scroll {
-  transform: translate3d(0, -15vh, 0);
+  transform: translate3d(0, -1vh, 0);
 }
-.background.up-scroll .content-wrapper {
-  transform: translateY(15vh);
+.content-wrapper:first-child {
+  transform: translateY(50vh);
 }
 .background.up-scroll + .background {
   transform: translate3d(0, 30vh, 0);
