@@ -255,6 +255,14 @@ img {
     width: 100vw !important;
     margin-top: 100px !important;
   }
+  .main_contact {
+    margin: auto;
+    margin-left: 0 !important;
+    margin-top: 1rem !important;
+  }
+  .img__contact{
+    display: none !important;
+  }
 }
 
 .nav__list {
@@ -538,20 +546,24 @@ img {
 .content-wrapper:first-child {
   transform: translateY(50vh);
 }
-.background.up-scroll + .background + .scroll__button1 + .scroll__button{
+.background.up-scroll + .background + .scroll__button1 + .scroll__button {
   transform: translate3d(0, 30vh, 0);
 }
-.background.up-scroll + .background .content-wrapper + .scroll__button1 + .scroll__button{
+.background.up-scroll
+  + .background
+  .content-wrapper
+  + .scroll__button1
+  + .scroll__button {
   transform: translateY(30vh);
 }
 
 .background.down-scroll {
   transform: translate3d(0, -143vh, 0);
 }
-.background.down-scroll .content-wrapper + .scroll__button1 + .scroll__button{
+.background.down-scroll .content-wrapper + .scroll__button1 + .scroll__button {
   transform: translateY(40vh);
 }
-.background.down-scroll + .background:not(.down-scroll ) {
+.background.down-scroll + .background:not(.down-scroll) {
   transform: translate3d(0, -15vh, 0);
 }
 .background.down-scroll + .background:not(.down-scroll) .content-wrapper {
@@ -673,16 +685,32 @@ li:nth-child(odd) {
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+.card-body {
+  color: var(--title-color);
+}
+input[type="text"],
+input[type="text"]:focus,
+input[type="email"],
+input[type="email"]:focus,
+textarea#comment {
+  background: var(--body-color);
+  color: var(--title-color);
+}
+.main_contact {
+  margin: auto;
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
 
 .uil-angle-down,
 .uil-angle-up {
-  margin: .5rem;
+  margin: 0.5rem;
   color: var(--title-color);
   text-decoration: none;
   font-size: 2rem;
   border-radius: 50px;
   background: var(--body-color);
-  opacity: .8;
+  opacity: 0.8;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
@@ -690,7 +718,7 @@ li:nth-child(odd) {
 }
 .scroll__button {
   position: relative;
-  bottom: 200px;
+  bottom: 250px;
   text-align: center;
 }
 
