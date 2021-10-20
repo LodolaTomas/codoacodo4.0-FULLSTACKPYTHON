@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paco Rabanne - Contact</title>
+  <!-- BOOTSTRAP 5.0.2 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- STYLE CSS -->
+  <link rel="stylesheet" href="/CSS/style.css">
+  <!-- ICONSCOUT -->
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <link rel="shortcut icon" href="https://www.pacorabanne.com/ww/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon">
+</head>
+
+<body>
+  <header class="header header_contact" id="header">
+    <div class="header__content">
+      <p class="header__text">
+        <b class="text">Por cualquier compra de fragancia o set, recibira un regalo exclusivo!</b><br>
+        <a class="text link" href="javascript:void(0)">REGÍSTRATE Y CONSIGUE UN 15 % DE DESCUENTO*</a>
+      </p>
+    </div>
+  </header>
+  <nav class="nav" id="navbar">
+    <div class="container">
+      <a href="/HTML/index.html" class="nav__logo">paco rabanne</a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="/HTML/location.html" class="nav__link">
+              location<i class="uil uil-angle-right nav__icon"></i>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href='#tab2' class="nav__link section2">
+              fragancias mujer<i class="uil uil-angle-right nav__icon"></i>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="" class="nav__link">
+              fragancias hombre<i class="uil uil-angle-right nav__icon"></i>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="" class="nav__link">
+              sobre nosotros<i class="uil uil-angle-right nav__icon"></i>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="" class="nav__link">
+              contacto<i class="uil uil-angle-right nav__icon"></i>
+            </a>
+          </li>
+        </ul>
+        <i class="uil uil-times nav__close" id="nav-close"></i>
+      </div>
+      <div class="nav__btns">
+        <!-- thene change button -->
+        <i class="uil uil-moon change-theme" id="theme-button"></i>
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="uil uil-bars"></i>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main style="margin:auto;margin-left: 2rem; margin-top: 2rem;" class="row">
+    <div class="card__background col-sm-6">
+      <div class="card-body">
+        <p class="card__title">Contactanos!</p>
+        <p>Completa este fomulario y a la brevedad recibira una respuesta.</p>
+        <form class="row g-3 needs-validation" novalidate>
+          <div class="col-md-6">
+            <input type="text" class="form-control" id="validationCustom01" required placeholder="Nombre">
+            <div class="invalid-feedback">
+              Por favor Ingrese un Nombre.
+            </div>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" id="validationCustom02"  required placeholder="Apellido">
+            <div class="invalid-feedback">
+              Por favor Ingrese un Apellido.
+            </div>
+          </div>
+          <div class="col-md-12">
+            <input type="email" class="form-control" id="validationCustom03" required placeholder="Correo, Ej.:alguien@gmai.com">
+            <div class="invalid-feedback">
+              Por favor Ingrese un Correo Electronico.
+            </div>
+          </div>
+          <div class="col-md-12">
+            <input type="text" class="form-control" id="validationCustom03" required placeholder="Asunto">
+            <div class="invalid-feedback">
+              Por favor Ingrese un Asunto.
+            </div>
+          </div>
+          <div class="col-md-12">
+            <textarea type="text-area" class="form-control" id="comment" placeholder="Consulta" formControlName="comment" style="resize: none;" rows=5 required></textarea>
+            <div class="invalid-feedback">
+              Por favor Ingrese un Asunto.
+            </div>
+          </div>
+          
+          <!-- <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+              <label class="form-check-label" for="invalidCheck">
+                Agree to terms and conditions
+              </label>
+              <div class="invalid-feedback">
+                You must agree before submitting.
+              </div>
+            </div>
+          </div> -->
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit">Submit form</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <img src="https://www.pacorabanne.com/ww/sites/default/files/2021-09/PHANTOM%20FR.gif" alt="PHANTOM_GIF_DESKTOP" loading="lazy" class="img__contact">
+    </div>
+  </main>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/JavaScript/main.js"></script>
+  <script src="/JavaScript/bootstrap.js"></script>
+</body>
+
+</html>

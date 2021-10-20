@@ -67,105 +67,10 @@ themeButton.addEventListener("click", () => {
   initMap();
 });
 
-function initMap() {
-  const map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.62137250491205, lng: -58.37137936816418 },
-    zoom: 15,
-    mapTypeControl: false,
-  });
-  //if the class name is dark-theme set the styles in night
-  if (document.body.className === "dark-theme") {
-    map.setOptions({ styles: styles.night });
-  }
-}
-// Styles a map in night mode and light.
-const styles = {
-  default: [],
-  night: [
-    { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
-    { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
-    { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
-    {
-      featureType: "administrative.locality",
-      elementType: "labels.text.fill",
-      stylers: [{ color: "#d59563" }],
-    },
-    {
-      featureType: "poi",
-      elementType: "labels.text.fill",
-      stylers: [{ color: "#d59563" }],
-    },
-    {
-      featureType: "poi.park",
-      elementType: "geometry",
-      stylers: [{ color: "#263c3f" }],
-    },
-    {
-      featureType: "poi.park",
-      elementType: "labels.text.fill",
-      stylers: [{ color: "#6b9a76" }],
-    },
-    {
-      featureType: "road",
-      elementType: "geometry",
-      stylers: [{ color: "#38414e" }],
-    },
-    {
-      featureType: "road",
-      elementType: "geometry.stroke",
-      stylers: [{ color: "#212a37" }],
-    },
-    {
-      featureType: "road",
-      elementType: "labels.text.fill",
-      stylers: [{ color: "#9ca5b3" }],
-    },
-    {
-      featureType: "road.highway",
-      elementType: "geometry",
-      stylers: [{ color: "#746855" }],
-    },
-    {
-      featureType: "road.highway",
-      elementType: "geometry.stroke",
-      stylers: [{ color: "#1f2835" }],
-    },
-    {
-      featureType: "road.highway",
-      elementType: "labels.text.fill",
-      stylers: [{ color: "#f3d19c" }],
-    },
-    {
-      featureType: "transit",
-      elementType: "geometry",
-      stylers: [{ color: "#2f3948" }],
-    },
-    {
-      featureType: "transit.station",
-      elementType: "labels.text.fill",
-      stylers: [{ color: "#d59563" }],
-    },
-    {
-      featureType: "water",
-      elementType: "geometry",
-      stylers: [{ color: "#17263c" }],
-    },
-    {
-      featureType: "water",
-      elementType: "labels.text.fill",
-      stylers: [{ color: "#515c6d" }],
-    },
-    {
-      featureType: "water",
-      elementType: "labels.text.stroke",
-      stylers: [{ color: "#17263c" }],
-    },
-  ],
-};
 
 /* SCROLL DOWN  */
-const navbar = document.getElementById("navbar");
-const header = document.getElementById("header");
+const navbar = document.getElementById("navbar"),
+  header = document.getElementById("header");
 /* window.onscroll = function () {
   myFunction();
 };
@@ -206,13 +111,25 @@ function myFunction() {
   }
   requestAnimationFrame(animation);
 } */
-var bajar_medio = document.querySelector(".section1");
-var bajar_final = document.querySelector(".section-2");
-var subir_principio = document.querySelector(".section-1");
-var subir_principio2 = document.querySelector(".section-up");
+const scrollDown = document.querySelector(".scrollDown"),
+  scrollDown2 = document.querySelector(".scrollDown-2"),
+  scrollUp = document.querySelector(".scrollUp"),
+  scrollUp2 = document.querySelector(".scrollUp-2");
 
-bajar_medio.addEventListener("click", function () {
-  console.log("click");
+scrollDown.addEventListener("click", function () {
+  s_Down();
+});
+scrollDown2.addEventListener("click", function () {
+  s_Down();
+});
+scrollUp.addEventListener("click", function () {
+  s_Up();
+});
+scrollUp2.addEventListener("click", function () {
+  s_Up();
+});
+
+function s_Down() {
   ticking = true;
   if (currentSlideNumber !== totalSlideNumber - 1) {
     currentSlideNumber++;
@@ -226,27 +143,9 @@ bajar_medio.addEventListener("click", function () {
     header.classList.remove("absolute");
     navbar.classList.add("nav-top");
   }
-});
+}
 
-bajar_final.addEventListener("click", function () {
-  console.log("click-1");
-  ticking = true;
-  if (currentSlideNumber !== totalSlideNumber - 1) {
-    currentSlideNumber++;
-    nextItem();
-  }
-  slideDurationTimeout(slideDurationSetting);
-  if (currentSlideNumber === 0) {
-    header.classList.add("absolute");
-    navbar.classList.remove("nav-top");
-  } else {
-    header.classList.remove("absolute");
-    navbar.classList.add("nav-top");
-  }
-});
-
-subir_principio.addEventListener("click", function () {
-  console.log("subo");
+function s_Up() {
   ticking = true;
   if (currentSlideNumber !== 0) {
     currentSlideNumber--;
@@ -261,38 +160,22 @@ subir_principio.addEventListener("click", function () {
     header.classList.remove("absolute");
     navbar.classList.add("nav-top");
   }
-});
-subir_principio2.addEventListener("click", function () {
-  console.log("subo");
-  ticking = true;
-  if (currentSlideNumber !== 0) {
-    currentSlideNumber--;
-  }
-  previousItem();
-  slideDurationTimeout(slideDurationSetting);
-  previousItem();
-  if (currentSlideNumber === 0) {
-    header.classList.add("absolute");
-    navbar.classList.remove("nav-top");
-  } else {
-    header.classList.remove("absolute");
-    navbar.classList.add("nav-top");
-  }
-});
+}
+
 var script = document.createElement("script");
 script.src = "https://code.jquery.com/jquery-3.6.0.min.js";
 script.type = "text/javascript";
 document.getElementsByTagName("head")[0].appendChild(script);
 
 let ticking = false;
-const isFirefox = /Firefox/i.test(navigator.userAgent);
-const isIe =
-  /MSIE/i.test(navigator.userAgent) ||
-  /Trident.*rv\:11\./i.test(navigator.userAgent);
-const scrollSensitivitySetting = 30; //Increase/decrease this number to change sensitivity to trackpad gestures (up = less sensitive; down = more sensitive)
-const slideDurationSetting = 600; //Amount of time for which slide is "locked"
+const isFirefox = /Firefox/i.test(navigator.userAgent),
+  isIe =
+    /MSIE/i.test(navigator.userAgent) ||
+    /Trident.*rv\:11\./i.test(navigator.userAgent),
+  scrollSensitivitySetting = 30, //Increase/decrease this number to change sensitivity to trackpad gestures (up = less sensitive; down = more sensitive)
+  slideDurationSetting = 600, //Amount of time for which slide is "locked"
+  totalSlideNumber = $(".background").length;
 let currentSlideNumber = 0;
-const totalSlideNumber = $(".background").length;
 
 // ------------- DETERMINE DELTA/SCROLL DIRECTION ------------- //
 function parallaxScroll(evt) {
@@ -326,7 +209,6 @@ function parallaxScroll(evt) {
       previousItem();
       slideDurationTimeout(slideDurationSetting);
     }
-    console.log(currentSlideNumber);
     if (currentSlideNumber === 0) {
       header.classList.add("absolute");
       navbar.classList.remove("nav-top");
