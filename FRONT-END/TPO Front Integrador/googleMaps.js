@@ -6,29 +6,8 @@ const stores = [
   { lat: -34.61990245562309, lng: -58.461522015222975 },
   { lat: -34.59548112225746, lng: -58.495979109568374 },
 ];
-initMap();
 
-function initMap() {
-  
-  const map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.58819329363501, lng: -58.44262590713367 },
-    zoom: 13,
-    mapTypeControl: false,
-  });
 
-  let marker= stores.map(position=>{
-    return new google.maps.Marker({
-      position: position,
-      map,
-      title: "Hello World!",
-    });
-  })
-  
-  //if the class name is dark-theme set the styles in night
-  if (document.body.className === "dark-theme") {
-    map.setOptions({ styles: styles.night });
-  }
-}
 // Styles a map in night mode and light.
 const styles = {
   default: [],
@@ -113,3 +92,28 @@ const styles = {
     },
   ],
 };
+
+
+
+
+function initMap() {
+  
+  const map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -34.58819329363501, lng: -58.44262590713367 },
+    zoom: 13,
+    mapTypeControl: false,
+  });
+
+  let marker= stores.map(position=>{
+    return new google.maps.Marker({
+      position: position,
+      map,
+      title: "Hello World!",
+    });
+  })
+  
+  //if the class name is dark-theme set the styles in night
+  if (document.body.className === "dark-theme") {
+    map.setOptions({ styles: styles.night });
+  }
+}
