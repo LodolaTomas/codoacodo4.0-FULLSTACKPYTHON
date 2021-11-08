@@ -115,7 +115,8 @@ const scrollDown = document.querySelector(".scrollDown"),
   scrollDown2 = document.querySelector(".scrollDown-2"),
   scrollUp = document.querySelector(".scrollUp"),
   scrollUp2 = document.querySelector(".scrollUp-2");
-
+if(scrollDown){
+  
 scrollDown.addEventListener("click", function () {
   s_Down();
 });
@@ -128,6 +129,7 @@ scrollUp.addEventListener("click", function () {
 scrollUp2.addEventListener("click", function () {
   s_Up();
 });
+}
 
 function s_Down() {
   ticking = true;
