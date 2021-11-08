@@ -240,3 +240,34 @@ function previousItem() {
   const $currentSlide = $(".background").eq(currentSlideNumber);
   $currentSlide.removeClass("down-scroll").addClass("up-scroll");
 }
+
+var $navLink = $('.navbar .nav__item > .sub__menu');
+var $navItem = $('.navbar .nav__item');
+var $header = $('.navbar');
+
+$navLink.on("mouseenter", function(){
+  var windowWidth = window.innerWidth;
+  if (windowWidth > 830) {
+    if ($(this).parents('.nav__item').hasClass('active')) {
+      $(this).parents('.nav__item').removeClass('active');
+      $(this).parents('.nav__item').find('.nav-menu-drop').css('display', 'none');
+    } else {
+      $navItem.removeClass('active');
+      $('.nav-menu-drop').css('display', 'none');
+      $(this).parents('.nav__item').find('.nav-menu-drop').animate({
+        height:'show'
+       }, "slow");
+      $(this).parents('.nav__item').addClass('active');
+      $(this).parents('.nav__item').find('.nav-menu-drop').css('display', 'block');
+    }
+  }
+});
+
+$header.on("mouseleave", function(){
+  $header.addClass('active');
+  $navItem.removeClass('active');
+  $('.nav-menu-drop').css('display', 'none');
+  $('.navbar').removeClass('active');
+})
+
+
