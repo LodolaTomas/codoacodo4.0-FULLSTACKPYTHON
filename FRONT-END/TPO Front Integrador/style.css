@@ -719,7 +719,6 @@ textarea#comment {
   text-align: center;
 }
 
-
 .nav-menu-drop {
   background: var(--body-color);
   color: var(--title-color);
@@ -729,10 +728,10 @@ textarea#comment {
   top: 64px;
   left: 0;
   -webkit-box-shadow: 0 10px 12px rgba(0, 0, 0, 0.05);
-          box-shadow: 0 10px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.05);
 }
 
-.nav-submenu-content{
+.nav-submenu-content {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -740,16 +739,16 @@ textarea#comment {
   padding: 1rem;
 }
 
-.nav-submenu-content > a:hover{
+.nav-submenu-content > a:hover {
   color: var(--title-color);
   text-decoration: none;
 }
 
-.row{
+.row {
   margin: var(--mb-1-5);
 }
 
-.sub-menu{
+.sub-menu {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -757,7 +756,7 @@ textarea#comment {
   padding-top: 1rem;
 }
 
-.sub-menu li{
+.sub-menu li {
   list-style-type: none;
   padding: 0;
   margin: var(--mb-0-25);

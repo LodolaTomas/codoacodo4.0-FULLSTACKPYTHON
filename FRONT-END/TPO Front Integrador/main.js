@@ -116,7 +116,6 @@ const scrollDown = document.querySelector(".scrollDown"),
   scrollUp = document.querySelector(".scrollUp"),
   scrollUp2 = document.querySelector(".scrollUp-2");
 if(scrollDown){
-  
 scrollDown.addEventListener("click", function () {
   s_Down();
 });
